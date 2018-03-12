@@ -1,0 +1,7 @@
+pandas supports three types of data structures:
+  1.Series    -1D, HOMOGENIOUS DATA, SIZE IS IMMUTABLE AND DATA IS MUTABLE
+  2.DataFrame -2D HETROGENIOUS DATA, SIZE AND DATA ARE MUTABLE
+  3.Panel     -3D HETROGENIOUS DATA, SIZE AND DATA ARE MUTABLE
+  
+  
+ 
