@@ -1,0 +1,177 @@
+============================================================================
+ex:
+x=4
+print x #will work
+#but
+print x[0] #will give error. Becasue for integers no index concept
+
+but by using pands we can assign even for intergers also index 
+
+
+import pandas as pd
+
+s=pd.Series(4)
+print s
+print s[0]
+
+you will get output like
+0 4
+
+and we can also assign required index value to out data
+
+s=pd.Series(4,index=[6])
+pritn s
+print s[6]
+
+
+>>> s=pd.Series(4,index=[2,3,4])
+>>> print s
+2    4
+3    4
+4    4
+dtype: int64
+
+Note:If data is a scalar value, an index must be provided. The value will be repeated to match the length of index
+================================================================================
+suppose if we take list as:
+my_li=[4,7,9,5,9]
+print my_li
+here indexes are from 0 to len(my_li)-1
+and they are 0,1,2,3,4
+
+Suppose, if we want assign indexes based on our requirement then it is not possible in list concept.
+But we can change indexes using pands.
+let me show that
+
+>>> s=pd.Series(my_li)
+>>> print s
+0    4
+1    7
+2    9
+3    5
+4    9
+dtype: int64
+
+anyway here indexs are default indexs.
+To changed indexs:
+
+
+>>> s=pd.Series(my_li,index=[23,45,78,90,4])
+>>> print s
+23    4
+45    7
+78    9
+90    5
+4     9
+dtype: int64
+
+>>> s=pd.Series(my_li,index=[101,102,103,104,105])
+>>> print s
+101    4
+102    7
+103    9
+104    5
+105    9
+dtype: int64
+
+Note: dont pass index values greater than your values, so,its better to pass index as
+start=101
+s=pd.Series(my_li,index=[start+each for each in range(len(my_li))])
+
+>>> s=pd.Series(my_li,index=[start+each for each in range(len(my_li))])
+>>> print s
+101    4
+102    7
+103    9
+104    5
+105    9
+dtype: int64
+
+>>> s = pd.Series([1,2,3,4,5],index = ['p','r','w',4,'nared'])                                                                                                                
+>>> print s
+p        1
+r        2
+w        3
+4        4
+nared    5
+dtype: int64
+
+Note: we can club index values with number and charcaters/strings
+
+
+Take list values are combination of int and float
+                                    int,float and str 
+then observe the output.
+
+==========================================================================================
+
+pandas series with dict:
+=======================
+
+>>> my_di={1:"one",2:"two",3:'three'}
+>>> s=pd.Series(my_di)
+>>> print s
+1      one
+2      two
+3    three
+dtype: object
+Note: keys are assigned as indexes.
+ 
+>>> s=pd.Series(my_di,index=[6,7,8])
+>>> print s
+6   NaN
+7   NaN
+8   NaN
+dtype: float64
+
+Note:If we try to assign indexes for dict then they are keys only right,So,if that key is there then particular value will be assigned
+otherwise value is Not a Number.
+
+>>> s=pd.Series(my_di,index=[1,2,3,6,7,8])
+>>> print s
+1      one
+2      two
+3    three
+6      NaN
+7      NaN
+8      NaN
+dtype: object
+=================================================================
+Accessing Series of Data with indexs:
+------------------------------------
+>>> s = pd.Series([1,2,3,4,5],index = ['p','r','w',4,'nared'])
+>>> print s
+p        1
+r        2
+w        3
+4        4
+nared    5
+dtype: int64
+>>> print s['r']
+2
+>>> print s[:'r']
+p    1
+r    2
+dtype: int64
+>>> print s[0]
+1
+>>> print s[:4]
+p    1
+r    2
+w    3
+4    4
+dtype: int64
+>>> print s[:5]
+p        1
+r        2
+w        3
+4        4
+nared    5
+dtype: int64
+NOTE:
+=====
+So,based on given label index we can access our data
+or with default indexes also we can access data
+
+Note: see this:
+https://www.digitalocean.com/community/tutorials/how-to-install-the-pandas-package-and-work-with-data-structures-in-python-3
